@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6be62">
+  <title>Gửi bà một chút nắng ☀</title>
+  <meta name="description" content="Có một bé mèo mang cả mặt trời tới chào bà. Mở ra nhận một chút nắng nha!">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23fff3ce'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23f8ae31'/%3E%3Cg stroke='%23f8ae31' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 8v5m0 38v5M8 32h5m38 0h5M15 15l4 4m26 26 4 4M15 49l4-4m26-26 4-4'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preload" href="assets/morning.webp" as="image">
+  <link rel="preload" href="assets/kitten.png" as="image">
+  <link rel="preload" href="assets/sakura-petals.webp" as="image">
+  <link rel="stylesheet" href="style.css?v=sakura-20260924">
+  <script src="sakura.js?v=sakura-20260924" defer></script>
+  <script src="story.js?v=sakura-20260924" defer></script>
+</head>
+<body>
+  <main id="story" class="story" data-scene="0" aria-label="Một lời chào buổi sáng dành cho bà">
+    <div class="world" aria-hidden="true"><div class="landscape"></div><div class="dawn"></div><div class="light"></div><div class="veil"></div></div>
+    <div class="sakura-glow" aria-hidden="true"></div>
+    <canvas id="sakura-back" class="sakura-layer" aria-hidden="true"></canvas>
+    <canvas id="sakura-front" class="sakura-layer" aria-hidden="true"></canvas>
+    <canvas id="sparkles" aria-hidden="true"></canvas>
+    <div class="flash" aria-hidden="true"></div>
+    <header class="topbar">
+      <span class="dedication"><span aria-hidden="true">✦</span> một chút nắng cho bà</span>
+      <button id="sound" class="icon-button sound-button" type="button" aria-label="Tắt âm thanh" aria-pressed="true" title="Bật hoặc tắt âm thanh">
+        <svg class="speaker" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute-line" d="m15 9 6 6m0-6-6 6"/></svg>
+      </button>
+    </header>
+
+    <div class="copy-area" aria-live="polite" aria-atomic="true">
+      <p id="eyebrow" class="eyebrow">một lời chào bé xíu</p>
+      <h1 id="headline">Bà ơi,<br>có nắng gửi tới!</h1>
+      <p id="caption" class="caption">Có một bé mèo muốn chào bà buổi sáng.</p>
+    </div>
+
+    <div class="character-area">
+      <div class="sleepy" aria-hidden="true"><span>z</span><span>z</span><span>z</span></div>
+      <div class="halo" aria-hidden="true"></div>
+      <div class="cat-entrance">
+        <button id="kitten" class="kitten" type="button" aria-label="Đánh thức bé mèo và mở lời chào buổi sáng" style="--col:0;--row:0">
+          <span class="sprite" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div id="bubble" class="bubble" role="status"></div>
+      <span class="little-note" aria-hidden="true">đang mơ một giấc thật tròn…</span>
+    </div>
+
+    <div class="action-area">
+      <button id="main-action" class="main-action" type="button"><span class="button-star" aria-hidden="true">✦</span><span id="action-label">Mở một chút nắng</span><span class="button-star small" aria-hidden="true">✦</span></button>
+      <p id="hint" class="hint">Một món quà nhỏ cho buổi sáng của bà.</p>
+      <button id="replay" class="text-button" type="button" hidden><span aria-hidden="true">↻</span> Xem lại từ đầu</button>
+    </div>
+
+    <footer class="playback" hidden>
+      <button id="pause" class="icon-button" type="button" aria-label="Tạm dừng hoạt cảnh"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="pause-icon" d="M8 5v14M16 5v14"/><path class="play-icon" d="m8 5 11 7-11 7V5Z"/></svg></button>
+      <div class="progress" role="progressbar" aria-label="Tiến trình lời chào" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span><span></span><span></span><span></span><span></span></div>
+      <button id="skip" class="text-button skip" type="button">Xem lời chúc</button>
+    </footer>
+    <noscript><div class="noscript">Bà ơi, chào buổi sáng! Chúc bà hôm nay gặp toàn chuyện dễ thương. Bật JavaScript để cùng bé mèo mở một chút nắng nha.</div></noscript>
+  </main>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3fdbd8cd8108617',t:'MTc5MDIxMDQ1NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
