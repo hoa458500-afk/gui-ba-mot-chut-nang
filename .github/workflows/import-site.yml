@@ -1,0 +1,40 @@
+name: Import site files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download current site files
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://gui-ba-mot-chut-nang.hoanguyen22.chatgpt.site"
+          mkdir -p assets
+          curl -fL "$BASE/" -o index.html
+          curl -fL "$BASE/style.css" -o style.css
+          curl -fL "$BASE/sakura.js" -o sakura.js
+          curl -fL "$BASE/story.js" -o story.js
+          curl -fL "$BASE/assets/kitten.png" -o assets/kitten.png
+          curl -fL "$BASE/assets/morning.webp" -o assets/morning.webp
+          curl -fL "$BASE/assets/sakura-petals.webp" -o assets/sakura-petals.webp
+      - name: Commit imported files
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html style.css sakura.js story.js assets/
+          git diff --cached --quiet && exit 0
+          git commit -m "Import web project files"
+          git push
